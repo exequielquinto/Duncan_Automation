@@ -19,3 +19,17 @@ def float32_to_msb(num):
 
 def float32_to_lsb(num):
     return int(float32_to_bin(num)[16:32],2)
+
+def pac_set(msb,lsb,client):
+    try:
+        client.write_register(5054, msb)
+        client.write_register(5055, lsb)
+    except:
+        try:
+            print('pac set error1')
+            client.write_register(5054, msb)
+            client.write_register(5055, lsb)
+        except:
+            print('pac set error2')
+            client.write_register(5054, msb)
+            client.write_register(5055, lsb)
